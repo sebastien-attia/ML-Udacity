@@ -11879,19 +11879,19 @@ This supervised learning problem is a classification problem because the label o
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calculate number of students</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Calculate number of students</span>
 <span class="n">n_students</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c1"># TODO: Calculate number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># Calculate number of features</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
 
-<span class="c1"># TODO: Calculate passing students</span>
+<span class="c1"># Calculate passing students</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;yes&#39;</span><span class="p">])</span>
 
-<span class="c1"># TODO: Calculate failing students</span>
+<span class="c1"># Calculate failing students</span>
 <span class="n">n_failed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;no&#39;</span><span class="p">])</span>
 
-<span class="c1"># TODO: Calculate graduation rate</span>
+<span class="c1"># Calculate graduation rate</span>
 <span class="n">grad_rate</span> <span class="o">=</span> <span class="n">n_passed</span> <span class="o">*</span> <span class="mf">100.</span> <span class="o">/</span> <span class="n">n_students</span>
 
 <span class="c1"># Print the results</span>
@@ -11917,7 +11917,7 @@ This supervised learning problem is a classification problem because the label o
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
 Graduation rate of the class: 67.09%
@@ -12104,16 +12104,16 @@ Feature values:
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import any additional functionality you may need here</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import any additional functionality you may need here</span>
+<span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 
-<span class="c1"># TODO: Set the number of training points</span>
+<span class="c1"># Set the number of training points</span>
 <span class="n">num_train</span> <span class="o">=</span> <span class="mi">300</span>
 
 <span class="c1"># Set the number of testing points</span>
 <span class="n">num_test</span> <span class="o">=</span> <span class="n">X_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_train</span>
 
-<span class="c1"># TODO: Shuffle and split the dataset into the number of training and testing points above</span>
+<span class="c1"># Shuffle and split the dataset into the number of training and testing points above</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">num_train</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># Show the results of the split</span>
@@ -12190,6 +12190,23 @@ I choose the following machine learning algorithm:</p>
 <li>Gaussian Naive Bayes and</li>
 <li>Support Vector Machine</li>
 </ul>
+<p>According to Wikipedia, <em>Logistic Regression</em> is used in <a href="https://en.wikipedia.org/wiki/Logistic_regression#cite_note-4">various fields</a> as medical, engineering, marketing or economics. 
+The Logistic Regression performs well on large dataset or in dataset having a large number of features in comparaison of the size of the dataset. 
+The Logistic Regression performs poorly when there is a dependance between the features. It is too a good estimator, ie it estimates the probability to belong to a class or not.
+The Logistic Regression is not the best algorithm, according its strenghts and its weaknesses, but as the algorithm is cheap from a computational point of view and its interpretation is straight forward (in comparaison to a Decision Tree for example), it is the right candidate to test first in any case.</p>
+<p>According to <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">wikipedia</a> and some answers in <a href="https://www.quora.com/In-what-real-world-applications-is-Naive-Bayes-classifier-used">Quora</a>, the <em>Gaussian Naive Bayes</em> is used to:</p>
+<ul>
+<li>classify emails as "Spam" or "Not Spam",</li>
+<li>classify news article (for example as technology, politics or sports),</li>
+<li>classify a text expressing a positive or a negative emotions.
+Even if the Gaussian Naive Bayes algorithm required the independence of the features in theory, it performs well even when this condition is not fulfilled. The Gaussian Naive Bayes is also not sensitive to irrelevant features.
+The Gaussian Naive Bayes performs poorly when the size of the dataset is small.
+The current problem has 30 features and we are not sure they are all relevant. This algorithm is then a good candidate to test.</li>
+</ul>
+<p>The <em>Support Vector Machine</em> is among other things used to classify the Traffic Signs According to <a href="https://en.wikipedia.org/wiki/Support_vector_machine#Applications">wikipedia</a>, the algorithm is also used for text categorization, recognition of hand-written characters and is used in biological and other sciences.
+The SVM performs well when the number of features is large relatively to the size of the dataset or when the number of features is small relatively to the size of the dataset. The kernel trick is a major advantage too.
+SVM does not directly provide a probability estimate (like Logistic Regression does for example). This is the weakness of the SVM algorithm.
+In this problem, the number of features is 30 and the size of the dataset is 300. As the number of features is significantly smaller than the datasize, the SVM is a good candidate.</p>
 
 </div>
 </div>
@@ -12290,22 +12307,22 @@ I choose the following machine learning algorithm:</p>
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import the three supervised learning models from sklearn</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span><span class="p">,</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors.nearest_centroid</span> <span class="kn">import</span> <span class="n">NearestCentroid</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
-<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<span class="c1">#from sklearn.neural_network import MLPClassifier</span>
 
 
-<span class="c1"># TODO: Initialize the three models</span>
+<span class="c1"># Initialize the three models</span>
 <span class="n">clf_A</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span> <span class="c1">#</span>
 <span class="n">clf_B</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">clf_C</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>
 
-<span class="c1"># TODO: Set up the training set sizes</span>
+<span class="c1"># Set up the training set sizes</span>
 <span class="n">X_train_100</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
 <span class="n">y_train_100</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
 
@@ -12315,7 +12332,7 @@ I choose the following machine learning algorithm:</p>
 <span class="n">X_train_300</span> <span class="o">=</span> <span class="n">X_train</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span>
 <span class="n">y_train_300</span> <span class="o">=</span> <span class="n">y_train</span><span class="p">[:</span><span class="mi">300</span><span class="p">]</span>
 
-<span class="c1"># TODO: Execute the &#39;train_predict&#39; function for each classifier and each training set size</span>
+<span class="c1"># Execute the &#39;train_predict&#39; function for each classifier and each training set size</span>
 <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">clf_A</span><span class="p">,</span> <span class="n">clf_B</span><span class="p">,</span> <span class="n">clf_C</span><span class="p">,]):</span>
     <span class="k">for</span> <span class="n">X_t</span><span class="p">,</span> <span class="n">y_t</span> <span class="ow">in</span> <span class="p">((</span><span class="n">X_train_100</span><span class="p">,</span> <span class="n">y_train_100</span><span class="p">),</span> <span class="p">(</span><span class="n">X_train_200</span><span class="p">,</span> <span class="n">y_train_200</span><span class="p">),</span> <span class="p">(</span><span class="n">X_train_300</span><span class="p">,</span> <span class="n">y_train_300</span><span class="p">),):</span>
@@ -12327,6 +12344,7 @@ I choose the following machine learning algorithm:</p>
 <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sorted_result</span><span class="p">)):</span>
     <span class="k">print</span><span class="p">(</span><span class="n">sorted_result</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
     
+<span class="k">print</span><span class="p">(</span><span class="n">clf_A</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12353,7 +12371,7 @@ F1 score for test set: 0.7647.
 Training a LogisticRegression using a training set size of 200. . .
 Trained model in 0.0020 seconds
 Made predictions in 0.0000 seconds.
-Made predictions in 0.0000 seconds.
+Made predictions in 0.0010 seconds.
 F1 score for training set: 0.8562.
 F1 score for test set: 0.7914.
 -------------------------------------------------------------------
@@ -12366,14 +12384,14 @@ F1 score for test set: 0.8060.
 -------------------------------------------------------------------
 Training a GaussianNB using a training set size of 100. . .
 Trained model in 0.0010 seconds
-Made predictions in 0.0000 seconds.
+Made predictions in 0.0010 seconds.
 Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8467.
 F1 score for test set: 0.8029.
 -------------------------------------------------------------------
 Training a GaussianNB using a training set size of 200. . .
 Trained model in 0.0010 seconds
-Made predictions in 0.0000 seconds.
+Made predictions in 0.0010 seconds.
 Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8406.
 F1 score for test set: 0.7244.
@@ -12386,14 +12404,14 @@ F1 score for training set: 0.8038.
 F1 score for test set: 0.7634.
 -------------------------------------------------------------------
 Training a SVC using a training set size of 100. . .
-Trained model in 0.0020 seconds
+Trained model in 0.0010 seconds
 Made predictions in 0.0010 seconds.
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0000 seconds.
 F1 score for training set: 0.8777.
 F1 score for test set: 0.7746.
 -------------------------------------------------------------------
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0020 seconds
+Trained model in 0.0030 seconds
 Made predictions in 0.0010 seconds.
 Made predictions in 0.0020 seconds.
 F1 score for training set: 0.8679.
@@ -12401,7 +12419,7 @@ F1 score for test set: 0.7815.
 -------------------------------------------------------------------
 Training a SVC using a training set size of 300. . .
 Trained model in 0.0050 seconds
-Made predictions in 0.0010 seconds.
+Made predictions in 0.0020 seconds.
 Made predictions in 0.0040 seconds.
 F1 score for training set: 0.8761.
 F1 score for test set: 0.7838.
@@ -12415,6 +12433,10 @@ F1 score for test set: 0.7838.
 (&#39;LogisticRegression&#39;, 0, 300, 0.76470588235294135)
 (&#39;GaussianNB&#39;, 1, 300, 0.76335877862595414)
 (&#39;GaussianNB&#39;, 1, 300, 0.72440944881889768)
+LogisticRegression(C=1.0, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=100, multi_class=&#39;ovr&#39;, n_jobs=1,
+          penalty=&#39;l2&#39;, random_state=26, solver=&#39;liblinear&#39;, tol=0.0001,
+          verbose=0, warm_start=False)
 </pre>
 </div>
 </div>
@@ -12564,10 +12586,11 @@ F1 score for test set: 0.7838.
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong><br>
-The Support Vector Machine classifier is the best model because we obtain the best training score with this model.<br>
-In general, when when the number of features is small ( &lt; 1000 ) and the number of samples is also low ( &lt; 10 000 ),
-the SVM is a good choice.</p>
+<p><strong>Answer: </strong></p>
+<p>If the do not consider the performance, the <strong>Logistic Regression</strong> has a better performance with a F1 score in test (generalization dataset with unseen data) of 0.8060 (with the training set size of 300). The training time for the Logistic Progression increases linearly with the size of the dataset (from 1 ms for a training set size of 100 to 3 ms for a training set size of 300).</p>
+<p>The performance for the <strong>GaussianNB</strong> is very close to the one of the <strong>Logistic Regression</strong> with a F1 score of 0.8029 on the test dataset (training set size of 100). But there is a degradation of the F1 score in test when the training set size increases. There is a problem of overfitting and with this algorithm, there is no way to limit the overfitting.</p>
+<p>The <strong>Super Vector Machine</strong> is discarded because the computational time is higher than for the 2 other algorithms and its training time augments dramatically when the training set size increases. Top on that, the F1 score in test is not that good in comparaison of the <strong>Logistic Regression</strong> algorithm.</p>
+<p>As the resources are limited and the cost is an important variable to choose the appropriate algorithm, the best algorithm in this context is the <strong>Logistic Regression</strong> algorithm.</p>
 
 </div>
 </div>
@@ -12585,12 +12608,13 @@ the SVM is a good choice.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong><br>
-Roughly speaking, the SVM model applied to classification problems will try to:</p>
-<ol>
-<li>classify correctly like a Logistic Regression would do and,</li>
-<li>find a separation having the largest distance (call the margin) to the nearest training data points of any class.</li>
-</ol>
+<p><strong>Answer: </strong></p>
+<p>The goal of this algorithm is to predict if a student will pass or fail the grade, given, for example, the number of absences, the distance of the school from home or the number of failures.
+Of course, the link we look for is not a link of causality, but a correlation.</p>
+<p>The Logistic Regression algorithm will try to find a separation between the student who pass and the student who do not pass the grade.
+Let's take the following set of data. The Logistic Regression will try to find the most accurate separation between the red dots and the blue dots.
+<img src="example_img.png" alt="">
+(image coming from <a href="http://mlpy.sourceforge.net/docs/3.5/lin_class.html">http://mlpy.sourceforge.net/docs/3.5/lin_class.html</a>)</p>
 
 </div>
 </div>
@@ -12620,31 +12644,32 @@ Roughly speaking, the SVM model applied to classification problems will try to:<
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import &#39;GridSearchCV&#39; and &#39;make_scorer&#39;</span>
 <span class="kn">from</span> <span class="nn">sklearn.grid_search</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">make_scorer</span>
 
-<span class="c1"># TODO: Create the parameters list you wish to tune</span>
+<span class="c1"># Create the parameters list you wish to tune</span>
 <span class="c1"># n/100. for n in range(1, 101)</span>
 <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="mf">100.</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)],</span> <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmoid&#39;</span><span class="p">,],</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="mf">100.</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)],</span> <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmoid&#39;</span><span class="p">],</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.</span><span class="o">/</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">91</span><span class="p">)]</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="mf">100.</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)],</span> <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;newton-cg&#39;</span><span class="p">,</span> <span class="s1">&#39;lbfgs&#39;</span><span class="p">,],</span> <span class="s1">&#39;multi_class&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ovr&#39;</span><span class="p">,</span> <span class="s1">&#39;multinomial&#39;</span><span class="p">,]</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="mf">100.</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)],</span> <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;newton-cg&#39;</span><span class="p">,</span> <span class="s1">&#39;lbfgs&#39;</span><span class="p">,</span> <span class="s1">&#39;sag&#39;</span><span class="p">,],</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="o">/</span><span class="mf">100.</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">)],</span> <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="p">[</span> <span class="s1">&#39;liblinear&#39;</span><span class="p">,</span> <span class="p">],</span> <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;l1&#39;</span><span class="p">,</span> <span class="s1">&#39;l2&#39;</span><span class="p">,]},</span>
 <span class="p">]</span>
 
-<span class="c1"># TODO: Initialize the classifier</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>
+<span class="c1"># Initialize the classifier</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># TODO: Make an f1 scoring function using &#39;make_scorer&#39; </span>
+<span class="c1"># Make an f1 scoring function using &#39;make_scorer&#39; </span>
 <span class="n">f1_scorer</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="n">f1_score</span><span class="p">,</span> <span class="n">pos_label</span><span class="o">=</span><span class="s1">&#39;yes&#39;</span><span class="p">)</span>
 
-<span class="c1"># TODO: Perform grid search on the classifier using the f1_scorer as the scoring method</span>
-<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">f1_scorer</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># Perform grid search on the classifier using the f1_scorer as the scoring method</span>
+<span class="n">grid_obj</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">f1_scorer</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="c1"># TODO: Fit the grid search object to the training data and find the optimal parameters</span>
-<span class="n">grid_obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">)</span>
+<span class="c1"># Fit the grid search object to the training data and find the optimal parameters</span>
+<span class="n">grid_obj</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
 <span class="c1"># Get the estimator</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">grid_obj</span><span class="o">.</span><span class="n">best_estimator_</span>
@@ -12669,15 +12694,27 @@ Roughly speaking, the SVM model applied to classification problems will try to:<
 <div class="prompt"></div>
 
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>c:\users\sebastien\envs\udacity2.7\lib\site-packages\sklearn\linear_model\sag.py:267: ConvergenceWarning: The max_iter was reached which means the coef_ did not converge
+  &#34;the coef_ did not converge&#34;, ConvergenceWarning)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>SVC(C=0.93, cache_size=200, class_weight=None, coef0=0.0,
-  decision_function_shape=None, degree=3, gamma=0.0769230769231,
-  kernel=&#39;rbf&#39;, max_iter=-1, probability=False, random_state=26,
-  shrinking=True, tol=0.001, verbose=False)
-Made predictions in 0.0060 seconds.
-Tuned model has a training F1 score of 0.9557.
-Made predictions in 0.0020 seconds.
-Tuned model has a testing F1 score of 0.9302.
+<pre>LogisticRegression(C=0.12, class_weight=None, dual=False, fit_intercept=True,
+          intercept_scaling=1, max_iter=1000, multi_class=&#39;ovr&#39;, n_jobs=-1,
+          penalty=&#39;l1&#39;, random_state=26, solver=&#39;liblinear&#39;, tol=0.0001,
+          verbose=0, warm_start=False)
+Made predictions in 0.0010 seconds.
+Tuned model has a training F1 score of 0.8292.
+Made predictions in 0.0000 seconds.
+Tuned model has a testing F1 score of 0.8000.
 </pre>
 </div>
 </div>
@@ -12702,16 +12739,16 @@ Tuned model has a testing F1 score of 0.9302.
 <p><strong>Answer: </strong><br>
 The final scores for:</p>
 <ul>
-<li>training is 0.9557,</li>
-<li>testing is 0.9302.</li>
+<li>training is 0.8292,</li>
+<li>testing is 0.8000.</li>
 </ul>
 <p>With the untuned model the scores were:</p>
 <ul>
-<li>training: 0.8761 and,</li>
-<li>testing: 0.7838
-As the gap between the training and the testing score is high, the model overfits.</li>
+<li>training: 0.8468 and,</li>
+<li>testing: 0.8060</li>
 </ul>
-<p>The tuned model does not only provide a better (test) accuracy (from 0.7838 to 0.9302), it also "removes" the overfitting of the model (the gap between the training score and the testing score is low - 0.9557 compares to 0.9302).</p>
+<p>The final score of the tuned model is almost the same than the one of the untuned model.
+As the difference between the training score and the testing score is higher for the untuned model (0.0408 = 0.8468 - 0.8060) than for the tuned model (0.0292 = 0.8292 - 0.8000), it means the tuned model overfit less and is better to generalize when a prediction is done on fresh data.</p>
 
 </div>
 </div>
